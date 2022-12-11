@@ -18,7 +18,8 @@ const AlertCard = ({ product, isExpiry }) => {
     e.preventDefault();
     updateProducts(product._id, {inStock: product.inStock + parseInt(stock)}, dispatch);
     alert("Product Updated Successfully")
-    window.location.reload();
+    setStock(0)
+    e.target.reset()
   }
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const AlertCard = ({ product, isExpiry }) => {
             setRemaining(res.data.inStock)
             setExpiryDate(moment(res.data.expiryDate).format("MMM DD YYYY"))
         })
-  }, [product])
+  })
   
   return (
     <Card style={{ maxWidth: 300, marginBlock: '15px', textAlign: 'center', background: '#f5f5f5' }}>
@@ -53,7 +54,7 @@ const AlertCard = ({ product, isExpiry }) => {
                 onSubmit={handleSubmit}
                 style={{display: 'flex', justifyContent: 'center', gap: '5px'}} 
             >
-                <input type="number" name="inStock" required placeholder={0} style={{padding: '0.3rem'}} onChange={(e) => setStock(e.target.value)} />
+                <input type="number" name="inStock" required placeholder={"0"} style={{padding: '0.3rem'}} onChange={(e) => setStock(e.target.value)} />
                 <Button type="submit" size="small" color="primary" variant='contained' >Add</Button>
             </form>
         </CardActions>
