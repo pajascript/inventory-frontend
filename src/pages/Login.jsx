@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { Container, Wrapper, Title, Form, Input, Button } from './LoginElements';
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { auth } from '../firebase'
+import { GoogleOutlined } from '@ant-design/icons'
 
 const Login = () => {
 
@@ -13,7 +14,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         try {
             e.preventDefault();
-            const user = await signInWithEmailAndPassword(auth, email, password)
+            await signInWithEmailAndPassword(auth, email, password)
             alert("Logged in successfully")
             history.push('/')
         } catch (err) {
@@ -25,7 +26,17 @@ const Login = () => {
             }
         }
     };  
-    
+
+    const handleGoogleClick = async (e) => {
+        try {
+            e.preventDefault();
+            const provider = new GoogleAuthProvider()
+            await signInWithPopup(auth, provider)
+        } catch (err) {
+            alert(err.message)
+        }
+    }
+
     return (
         <Container>
             <Wrapper>
@@ -33,8 +44,12 @@ const Login = () => {
                 <Form onSubmit={handleLogin} >
                     <Input placeholder="Email" type="email" onChange={(e) => setEmail(e.target.value)} required />
                     <Input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} required />
-                    <Button>LOGIN</Button>
+                    <div style={{display: 'flex', gap: '10px', cursor: 'pointer', textDecoration: 'underlined', alignItems: 'center', justifyContent: 'space-around'}} >
+                        <Button type='submit' >LOGIN</Button>
+                        
+                    </div>
                 </Form>
+                <button onClick={handleGoogleClick} style={{cursor: 'pointer', padding: '0.8rem', background: 'teal', color: '#fff', border: 'none', width: '100%'}} ><GoogleOutlined /> Login with Google</button>
             </Wrapper>
         </Container>
     )

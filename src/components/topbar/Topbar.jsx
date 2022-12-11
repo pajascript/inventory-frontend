@@ -2,13 +2,15 @@ import React from "react";
 import "./topbar.css";
 import logo from "../../images/logo.jpg";
 import { useHistory } from "react-router-dom"
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
 
 const Topbar = () => {
 
   const history = useHistory();
 
   const handleClick = () => {
-    history.push("/")
+    signOut(auth).then(() => alert("Logged out successfully!"))
   }
 
   return (
