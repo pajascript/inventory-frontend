@@ -17,21 +17,37 @@ const Sidebar = () => {
   const [redAlert, setRedAlert] = useState(false)
 
   useEffect(() => {
+    const quantity = []
+    const toExpire = []
+
     products.forEach(product => {
-      const daysBeforeExpiry = moment(product.expiryDate).diff(moment(Date.now()), 'days') + 1;
+      const daysBeforeExpiry = moment(product.expiryDate).diff(moment(Date.now()), 'days') + 1
 
       if (product.inStock <= 100) {
-        setRedAlert(true)
-      } 
-      else if (daysBeforeExpiry <= 5) {
-        setRedAlert(true)
+        quantity.push(product.inStock)
       }
-      else {
-        setRedAlert(false)
+      if (daysBeforeExpiry <= 5) {
+        toExpire.push(daysBeforeExpiry)
       }
     })
-  }, [products])
+    
+    if (quantity.length > 0 || toExpire.length > 0) {
+      setRedAlert(true)
+    } else {
+      setRedAlert(false)
+    }
 
+    // products.forEach(product => {
+    //   const daysBeforeExpiry = moment(product.expiryDate).diff(moment(Date.now()), 'days') + 1;
+
+    //   if (product.inStock <= 100 || daysBeforeExpiry <= 5) {
+    //     setRedAlert(true)
+    //   } else {
+    //     setRedAlert(false)
+    //   }
+    // })
+  })
+  
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">

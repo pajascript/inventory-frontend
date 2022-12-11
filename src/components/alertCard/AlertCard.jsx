@@ -11,7 +11,7 @@ const AlertCard = ({ product, isExpiry }) => {
 
   const [stock, setStock] = useState(0);
   const [remaining, setRemaining] = useState(0);
-  const [expiryDate, setExpiryDate] = useState(null);
+  const [expiryDate, setExpiryDate] = useState("...");
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {

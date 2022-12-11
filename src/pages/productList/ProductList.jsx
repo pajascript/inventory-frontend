@@ -82,7 +82,7 @@ export default function ProductList() {
     <div className="productList">
       <div className="btnWrapper" >
         <Link style={{textDecoration: 'none'}} to="/newproduct"><Button variant="contained" style={{marginBottom: '15px'}} className="addBtn" >Add new item</Button></Link>
-        <Button variant="contained" onClick={handleOpen}>Restock</Button>
+        {/* <Button variant="contained" onClick={handleOpen}>Restock</Button> */}
       </div>
       <DataGrid
         rows={formatDate(products)}
@@ -92,7 +92,7 @@ export default function ProductList() {
         pageSize={8}
       />
     </div>
-    <RestockModal open={open} handleClose={handleClose} />
+    {/* <RestockModal open={open} handleClose={handleClose} /> */}
   </>
   );
 }
