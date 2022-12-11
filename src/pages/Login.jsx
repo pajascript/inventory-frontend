@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
-import { Container, Wrapper, Title, Form, Input, Button } from './LoginElements';
+import { Container, Wrapper, Title, Form, Input, Button, ToggleButton, GoogleBtn } from './LoginElements';
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { auth } from '../firebase'
 import { GoogleOutlined } from '@ant-design/icons'
@@ -9,6 +9,7 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isRegister, setIsRegister] = useState(false);
     const history = useHistory();
 
     const handleLogin = async (e) => {
@@ -44,12 +45,12 @@ const Login = () => {
                 <Form onSubmit={handleLogin} >
                     <Input placeholder="Email" type="email" onChange={(e) => setEmail(e.target.value)} required />
                     <Input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} required />
-                    <div style={{display: 'flex', gap: '10px', cursor: 'pointer', textDecoration: 'underlined', alignItems: 'center', justifyContent: 'space-around'}} >
+                    <div style={{display: 'flex', flexDirection: 'column', cursor: 'pointer', textDecoration: 'underlined', alignItems: 'center', justifyContent: 'space-around'}} >
                         <Button type='submit' >LOGIN</Button>
-                        
+                        <ToggleButton>{isRegister ? "Don't have an account? Register" : "Already have an account? Login"}</ToggleButton>
                     </div>
                 </Form>
-                <button onClick={handleGoogleClick} style={{cursor: 'pointer', padding: '0.8rem', background: 'teal', color: '#fff', border: 'none', width: '100%'}} ><GoogleOutlined /> Login with Google</button>
+                <GoogleBtn onClick={handleGoogleClick} ><GoogleOutlined /> Login with Google</GoogleBtn>
             </Wrapper>
         </Container>
     )

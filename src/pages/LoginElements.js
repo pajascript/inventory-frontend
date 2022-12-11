@@ -39,17 +39,22 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-    width: 40%;
+    width: 100%;
     border: none;
     padding: 15px 20px;
     background: teal;
     color: #fff;
     cursor: pointer;
     margin-bottom: 10px;
+    transition: all 200ms ease-in-out;
 
     &:disabled {
         color: green;
         cursor: not-allowed;
+    }
+
+    &:hover {
+        background-color: rgb(1, 101, 101);
     }
 `;
 
@@ -62,4 +67,33 @@ export const Link = styled.a`
 
 export const Error = styled.p`
     color: red;
+`;
+
+export const ToggleButton = styled.p`
+    border: none;
+    color: teal;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    text-align: left;
+    margin-bottom: 15px;
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+`;
+
+export const GoogleBtn = styled.button`
+    cursor: pointer;
+    padding: 0.8rem;
+    background: inherit;
+    border: 2px solid teal;
+    width: 100%;
+    transition: all 200ms ease-in-out;
+
+    &:hover { 
+        background: teal;
+        color: #fff;
+    }
 `;
