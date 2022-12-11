@@ -16,7 +16,7 @@ export default function NewUser() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/api/auth/register", inputs)
+    axios.post("https://burger-inventory.onrender.com/api/auth/register", inputs)
       .then(res => {
         setSuccess(true);
         alert("New User Added!")

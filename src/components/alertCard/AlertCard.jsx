@@ -22,7 +22,7 @@ const AlertCard = ({ product, isExpiry }) => {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/products/find/${product._id}`)
+    axios.get(`https://burger-inventory.onrender.com/api/products/find/${product._id}`)
         .then(res => {
             setRemaining(res.data.inStock)
             setExpiryDate(moment(res.data.expiryDate).format("MMM DD YYYY"))

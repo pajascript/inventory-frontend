@@ -28,7 +28,7 @@ const WidgetLg = () => {
   const handleClick = (id) => {
     if (trackingDetails !== "") {
       const TOKEN = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken;
-      axios.put(`http://localhost:5000/api/orders/${id}`, {status: "completed", trackingDetails}, {headers: { token: `BEARER ${TOKEN}` }})
+      axios.put(`https://burger-inventory.onrender.com/api/orders/${id}`, {status: "completed", trackingDetails}, {headers: { token: `BEARER ${TOKEN}` }})
         .then((res) => {
           console.log("Success");
           window.location.reload();
