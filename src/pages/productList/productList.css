@@ -1,0 +1,53 @@
+.productList{
+    flex: 4;
+}
+
+.productListItem{
+    display: flex;
+    align-items: center;
+}
+
+.productListImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+
+.productListEdit {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #3bb077;
+    color: white;
+    cursor: pointer;
+    margin-right: 20px;
+    transition: all 200ms ease-in-out;
+}
+
+.productListEdit:hover {
+    transform: scale3d(1.1, 1.1, 1.5);
+}
+
+.productListDelete{
+    color: red;
+    cursor: pointer;
+}
+
+.addBtn {
+    background: rgb(144, 202, 249) !important;
+    transition: all 200ms ease !important;
+}
+
+.addBtn:hover {
+    background: rgb(123, 182, 231) !important;
+}
+
+.btnWrapper {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-right: 15px;
+}
